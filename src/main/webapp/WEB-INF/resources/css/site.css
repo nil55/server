@@ -1,0 +1,115 @@
+.table {
+    width: auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.table th {
+    text-decoration: underline;
+}
+.table th,
+.table td {
+    padding: 5px;
+    text-align: left;
+    width:auto;
+}
+.table td:nth-child(1),
+.table th:nth-child(1) {
+    min-width: 100px;
+}
+.table td:nth-child(2),
+.table th:nth-child(2) {
+    min-width: 80px;
+}
+.table td:nth-child(3),
+.table th:nth-child(3) {
+    min-width: 80px;
+}
+.table td:nth-child(4),
+.table th:nth-child(4) {
+    width: 200px;
+}
+.table td:nth-child(5),
+.table th:nth-child(5) {
+    width: 200px;
+}
+.table td:nth-child(6),
+.table th:nth-child(6) {
+    width: 200px;
+}
+.table td:nth-child(7),
+.table th:nth-child(7) {
+    width: 200px;
+}
+.table td:nth-child(8),
+.table th:nth-child(8) {
+    width: 200px;
+}
+.table td:nth-child(9),
+.table th:nth-child(9) {
+    width: 200px;
+}
+.table td:nth-child(10),
+.table th:nth-child(10) {
+    width: 200px;
+}
+.table td:nth-child(11),
+.table th:nth-child(11) {
+    width: 200px;
+}
+
+
+.table thead {
+    background-color: #333333;
+    color: #fdfdfd;
+}
+.table thead tr {
+    display: block;
+    position: relative;
+}
+.table tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: 300px;
+}
+.table tbody tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.old_ie_wrapper {
+    height: 300px;
+    width: 750px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.old_ie_wrapper tbody {
+    height: auto;
+}
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+  
+}
+.footer, .push {
+    height: 4em;
+}
+.loglist{
+    position: relative;
+    bottom: 0;
+
+}
+.charten{
+    width: auto;
+    height: 400px;
+    background-color: #FFFFFF;
+}
+.listData{
+    font-size: 12px;
+}
