@@ -12,7 +12,7 @@
         <script type="text/javascript" src="resources/js/amcharts.js"></script>
         <script type="text/javascript" src="resources/js/serial.js"></script>
         <script type="text/javascript" src="resources/themes/none.js"></script>
-  
+
     </head>
 
     <body>
@@ -33,8 +33,8 @@
                                 <option value="7">Sensor7</option>
                                 <option value="8">Sensor8</option>
                             </select> </td>
-                        <td><label>Limit log list:</label> <input id="inputText" type='text' name='value' /></td>
-                        <td><input onclick="collectValues()" type="submit" value="OK" class="btn"></td>
+                        <td><label>Limit log list:</label> <input id="idtext" type='text' name='value' value="2"/></td>
+                        <td><input  onclick="collectValues()" type="submit" value="OK" class="btn"></td>
                         <td><label>Auto refresh</label> <input type="checkbox" id="AutoRefresh"/></td>
                     </tr>
                 </table>
@@ -47,11 +47,20 @@
                 var sensorTime = [];
                 var sensorDate = [];
                 var chartData = generateChartData();
+                var sensorNR;
+
+
+                var count;
+
 
                 function collectValues() {
 
+                    count = document.getElementById("idtext").value;
+
+
                     var e = document.getElementById("Dsensor");
                     sensorNR = e.options[e.selectedIndex].value;
+
                     var a = 0;
                     if (sensorNR == 1) {
                 <c:forEach var="sensor" items="${listSensors}" varStatus="status">
@@ -110,23 +119,20 @@
                         a++;
                 </c:forEach>
                     }
-                    console.log(sensorValues[1]);
-                    console.log(sensorDate[1]);
-                    console.log(sensorTime[1]);
-                    console.log(a);
+                 
                 }
 
-               
-               var chart =  AmCharts.makeChart("chartdiv",
+
+                var chart = AmCharts.makeChart("chartdiv",
                         {
                             "type": "serial",
                             "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
                             "categoryField": "date",
-                            "dataDateFormat": "YYYY-MM-DD HH:NN:SS",
+                            "dataDateFormat": "YYYY-MM JJ:NN:SS:QQQ",
                             "theme": "default",
                             "categoryAxis": {
-                                "minPeriod": "ss",
-                                "parseDates": true
+                                "minPeriod": "fff",
+                                "parseDates": false
                             },
                             "chartCursor": {
                                 "categoryBalloonDateFormat": "JJ:NN:SS"
@@ -164,63 +170,72 @@
 //                        
                         }
                 );
-        chart.addListener("rendered", zoomChart);
-            zoomChart();
+
+                chart.addListener("rendered", zoomChart);
+                zoomChart();
 
 // this method is called when chart is first inited as we listen for "dataUpdated" event
-            function zoomChart() {
+                function zoomChart() {
 // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
-                chart.zoomToIndexes(chartData.length - 40, chartData.length - 1);
-            }
+                    chart.zoomToIndexes(chartData.length - 40, chartData.length - 1);
+                }
+
                 function generateChartData() {
-                     s = 0;
-                <c:forEach var="sensor" items="${listSensors}" varStatus="status">
-                sensorValues[s] = ${sensor.channel8};
-                sensorDate[s] = "${sensor.date}";
-                sensorTime[s] = "${sensor.time}";
-                s++;
-                </c:forEach>
                     var chartData = [];
-                 var value;
-//            
-                    for (var i = 0; i <100; i++) {
-                      
-                         value = sensorValues[i];
-                        var date = sensorDate[i] +" "+ sensorTime[i];
+                    var value;
+                    collectValues();
+
+//                    s = 0;
+//                <c:forEach var="sensor" items="${listSensors}" varStatus="status">
+//                    sensorValues[s] = ${sensor.channel8};
+//                    sensorDate[s] = "${sensor.date}";
+//                    sensorTime[s] = "${sensor.time}";
+//                    s++;
+//                </c:forEach>
+
+
+
+                    console.log(sensorNR);
+                    console.log(count);
+                    
+                    for (var i = 0; i < count; i++) {
+
+                        value = sensorValues[i];
+                        var date = sensorDate[i] + " " + sensorTime[i];
 
                         chartData.push({
                             Value: value,
-                             date: date
+                            date: date
                         });
                     }
                     console.log(chartData);
                     return chartData;
                 }
-            </script>
+                </script>
 
 
-        </div>
-        <div class="charten" id="chartdiv"></div>
+            </div>
+            <div class="charten" id="chartdiv"></div>
 
 
-        <div class="loglist">
-            <table class="table">
-                <thead>
-                    <tr class="listTitles">
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Channel1</th>
-                        <th>Channel2</th>
-                        <th >Channel3</th>
-                        <th>Channel4</th>
-                        <th>Channel5</th>
-                        <th>Channel6</th>
-                        <th>Channel7</th>
-                        <th>Channel8</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="loglist">
+                <table class="table">
+                    <thead>
+                        <tr class="listTitles">
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Channel1</th>
+                            <th>Channel2</th>
+                            <th >Channel3</th>
+                            <th>Channel4</th>
+                            <th>Channel5</th>
+                            <th>Channel6</th>
+                            <th>Channel7</th>
+                            <th>Channel8</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <c:forEach var="sensor" items="${listSensors}" varStatus="status">
 
 
