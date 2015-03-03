@@ -33,7 +33,7 @@
                                 <option value="7">Sensor7</option>
                                 <option value="8">Sensor8</option>
                             </select> </td>
-                        <td><label>Limit log list:</label> <input id="idtext" type='text' name='value' value="2"/></td>
+                        <td><label>Limit log list:</label> <input id="idtext" type='text' name='value' /></td>
                         <td><input  onclick="collectValues()" type="submit" value="OK" class="btn"></td>
                         <td><label>Auto refresh</label> <input type="checkbox" id="AutoRefresh"/></td>
                     </tr>
@@ -198,7 +198,7 @@
                     console.log(sensorNR);
                     console.log(count);
                     
-                    for (var i = 0; i < count; i++) {
+                    for (var i = 0; i < 500; i++) {
 
                         value = sensorValues[i];
                         var date = sensorDate[i] + " " + sensorTime[i];
