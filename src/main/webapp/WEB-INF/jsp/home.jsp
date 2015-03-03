@@ -132,6 +132,7 @@
                             "theme": "default",
                             "categoryAxis": {
                                 "minPeriod": "fff",
+                                "labelRotation": "90",
                                 "parseDates": false
                             },
                             "chartCursor": {
