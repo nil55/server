@@ -12,7 +12,15 @@
         <script type="text/javascript" src="resources/js/amcharts.js"></script>
         <script type="text/javascript" src="resources/js/serial.js"></script>
         <script type="text/javascript" src="resources/themes/none.js"></script>
-
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript">
+        var auto_refresh = setInterval(
+        function ()
+        {
+        $('#varden').load('showdata.jsp').fadeIn("slow");
+        }, 2000); // autorefresh the content of the div after
+                   //every 10000 milliseconds(10sec)
+        </script>
     </head>
 
     <body>
@@ -212,44 +220,6 @@
 
         <div id="show" align="center"></div>
 
-        <div class="loglist">
-            <table class="table">
-                <thead>
-                    <tr class="listTitles">
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Channel1</th>
-                        <th>Channel2</th>
-                        <th >Channel3</th>
-                        <th>Channel4</th>
-                        <th>Channel5</th>
-                        <th>Channel6</th>
-                        <th>Channel7</th>
-                        <th>Channel8</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="sensor" items="${listSensors}" varStatus="status">
-
-
-
-                        <tr class="listData">
-                            <td>${sensor.fileName}</td>
-                            <td>${sensor.date}</td>
-                            <td>${sensor.time}</td>
-                            <td>${sensor.channel1}</td>
-                            <td>${sensor.channel2}</td>
-                            <td>${sensor.channel3}</td>
-                            <td>${sensor.channel4}</td>
-                            <td>${sensor.channel5}</td>
-                            <td>${sensor.channel6}</td>
-                            <td>${sensor.channel7}</td>
-                            <td>${sensor.channel8}</td>               
-                        </tr>
-                    </c:forEach>    
-                </tbody>
-            </table>
-        </div>
+        <div id="varden" class="loglist"><%@ include file="showdata.jsp" %></div>
     </body>
 </html>
