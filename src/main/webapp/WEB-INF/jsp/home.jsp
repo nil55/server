@@ -13,32 +13,23 @@
         <script type="text/javascript" src="resources/js/serial.js"></script>
         <script type="text/javascript" src="resources/themes/none.js"></script>
         <script type="text/javascript" src="jquery.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-        </script>
-        <script>
-            function autoref() {
-                $(document).ready(function () {
-                    setInterval(function () {
-                        cache_clear();
-                    }, 3000);
-                });
-            }
-                function cache_clear()
-                {
-                    window.location.reload(true);
-            }
-        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+                <script>
+                    function autoref() {
+                        $(document).ready(window.location.replace(window.location.href));
+                    }
+                </script>
     </head>
 
     <body>
 
-        <div id="menu">
+        <div class="menu">
             <form name="outputlist"  method="POST">
-                <table style="width:auto; border: 1px solid black;">
+                <table class="men" style="width:auto; border: 1px solid black;">
                     <tr>
                         <td><label>Limit log list:</label> <input id="idtext" type='text' name='value' value="100" /></td>
-                        <td><input   type="submit" value="OK" class="btn"></td>
-                        <td><input type='button' value='AUTO-REFRESH' class="btn" onclick="cache_clear()"/></td>
+                        <td><input id="sizeButt" type="submit" value="OK" class="btn"></td>
+                        <td><input type='button' value='UPDATE' class="btn" onclick="autoref()"/></td>
                     </tr>
                 </table>
             </form>
@@ -49,6 +40,7 @@
 
         <div class="charten" id="chartdiv"></div>
 
-        <div id="logList" class="loglist"><%@ include file="listan.jsp" %></div>
+        <div id="logList" class="loglist">
+            <%@ include file="listan.jsp" %></div>
     </body>
 </html>

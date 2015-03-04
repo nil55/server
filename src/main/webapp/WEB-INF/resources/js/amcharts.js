@@ -1859,7 +1859,7 @@ AmCharts.AmChart = AmCharts.Class({construct: function (a) {
             var c = b = 0, d = this.realWidth, e = this.realHeight;
             if ("serial" == this.type || "xy" == this.type)
                 b = this.marginLeftReal, c = this.marginTopReal, d = b + this.plotAreaWidth, e = c + this.plotAreaHeight;
-            var f = "http://www.amcharts.com/javascript-charts/", g = "JavaScript charts", h = "JS chart by amCharts";
+            var f = "http://www.amcharts.com/javascript-charts/", g = "JavaScript charts", h = "";
             "ammap" == this.product && (f = "http://www.ammap.com/javascript-maps/",
                     g = "Interactive JavaScript maps", h = "JS map by amCharts");
             var k = document.createElement("a"), h = document.createTextNode(h);
