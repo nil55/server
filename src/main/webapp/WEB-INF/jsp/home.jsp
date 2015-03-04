@@ -187,8 +187,6 @@
                         value7 = sensorValues7[i];
                         value8 = sensorValues8[i];
 
-
-
                         var date = sensorDate[i] + "\n" + sensorTime[i];
                         chartData.push({
                             Value: value,
